@@ -1,5 +1,5 @@
 <h1>
-  Course #<%= course.id %> details
+  Course #<%= @course.id %> details
 </h1>
 
 <div>
@@ -16,13 +16,13 @@
 
 <hr>
 
-<form action="/modify_course/<%= @course.id %>" method="post">
+<form action="/modify_course/<%= @course.id %>" method="get">
   <div>
     <label for="title_box">
       Title
     </label>
 
-    <input type="text" id="title_box" name="query_title">
+    <input type="text" id="title_box" name="q_title" value="<%= @course.title %>">
   </div>
 
   <div>
@@ -30,7 +30,7 @@
       Term offered
     </label>
 
-    <input type="text" id="term_offered_box" name="query_term_offered" value="<%= @course.term_offered %>">
+    <input type="text" id="term_offered_box" name="query_term" value="<%= @course.term_offered %>">
   </div>
 
   <div>
@@ -53,7 +53,7 @@
     </select>
   </div>
 
-  <button>
+  <button type="submit">
     Update course
   </button>
 </form>
@@ -65,7 +65,7 @@
     Title
   </dt>
   <dd>
-    <%= course.title %>
+    <%= @course.title %>
   </dd>
 
   <dt>
@@ -87,7 +87,8 @@
     Number of enrolled students
   </dt>
   <dd>
-    <%= enrollment.where({ :course_id => @course.id }) %>
+    <% enrolled = Enrollment.where({ :course_id => @course.id }) %>
+    <%= enrolled.length %>
   </dd>
 </dl>
 

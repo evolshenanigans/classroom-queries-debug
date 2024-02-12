@@ -22,35 +22,21 @@
 
 <table class="table" border="1">
   <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      Name
-    </th>
-
-    <th>
-    </th>
+    <th>ID</th>
+    <th>Name</th>
+    <th></th>
   </tr>
-
   <% @departments.each do |department| %>
     <tr>
+      <td><%= department.id %></td>
+      <td><%= department.name %></td>
       <td>
-        <%= @department.id %>
-      </td>
-
-      <td>
-        <%= @department.name %>
-      </td>
-
-      <td>
-        <a href="/departments/<%= @department.id %>">
-          Show details
-        </a>
+        <a href="/departments/<%= department.id %>">Show details</a>
       </td>
     </tr>
   <% end %>
 </table>
+
+
 
 <hr>
